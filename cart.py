@@ -2,46 +2,42 @@
 
 class Cart():
 
-    def addToCart(x):
-        item = input ('What is your item you want to add to your cart?')
+    def __init__(self,cart,name):
+        self.cart = cart
+        self.name = name
+
+    def addToCart(self):
+        item = input (f'What is your item you want to add to your cart {self.name}?')
         quanity = input (f'How many {item} do you want to add to your cart? ')
-        x[item] = quanity
+        self.cart[item] = quanity
 
-    def showCart(x):
-        print(f'These are the items in your cart {x}')
+    def showCart(self):
+        print(f'These are the items in your cart {self.cart}')
 
-    def removeFromCart(x):
-        y = input(f'What item from your cart do you want to remove {x} hit enter to remove! ')
-        x.pop(input("item: ")) 
+    def removeFromCart(self):
+        y = input(f'What item from your cart do you want to remove {self.cart} hit enter to remove! ')
+        self.cart.pop(input("item: ")) 
 
-def shopping_cart():
-    x = {}
-    while True:
-        cart=input('What do you want to do? Show/Add/Remove/Quit.')
-            
-        if cart.lower() == "add":
-            Cart.addToCart(x)
-           
-        elif cart.lower() == "remove":
-            Cart.removeFromCart(x)
-            
-        elif cart.lower() == "show":
-            Cart.showCart(x)
-
-        elif cart.lower() == "quit":
-            print('Thanks for coming into the store! ')
-            print(f'This is your cart! {x}')
-            break
-    
-        else:
-            print('Invalid input!')  
+    def shopping_cart(self):
         
-    return
-shopping_cart()
+        while True:
+            y =input(f'What do you want to do {self.name}? Show/Add/Remove/Quit.')
+            
+            if y.lower() == "add":
+                Cart.addToCart(self)
+           
+            elif y.lower() == "remove":
+                Cart.removeFromCart(self)
+            
+            elif y.lower() == "show":
+                Cart.showCart(self)
 
-
-
-Brett = shopping_cart()
-print(Brett)
-#Tyler = shopping_cart()
-#print(Tyler)
+            elif y.lower() == "quit":
+                print('Thanks for coming into the store! ')
+                print(f'This is your cart {self.name}! {self.cart}')
+                break
+    
+            else:
+                print('Invalid input!')  
+        
+        return
